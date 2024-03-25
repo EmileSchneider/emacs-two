@@ -27,6 +27,7 @@
 (require 'init-icp)
 (require 'init-lisp)
 (require 'init-clojure)
+(require 'init-python)
 
 (require 'init-org)
 (require 'init-whichkey)
