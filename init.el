@@ -27,6 +27,8 @@
 (require 'init-icp)
 (require 'init-lisp)
 (require 'init-clojure)
+(require 'init-java)
+(require 'init-scala)
 (require 'init-python)
 
 (require 'init-org)

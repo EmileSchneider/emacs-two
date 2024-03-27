@@ -28,6 +28,8 @@
 
 (require 'org-tempo)
 
+(use-package org-roam
+  :ensure t)
 (provide 'init-org)
 
 ;; (use-package org-fragtog
