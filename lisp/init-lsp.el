@@ -28,8 +28,7 @@
   :ensure
   :commands lsp-ui-mode
   :custom
-  (lsp-ui-peek-always-show t)
-  (lsp-ui-sideline-show-hover t)
-  (lsp-ui-doc-enable nil))
+  (lsp-ui-peek-always-show nil)
+  (lsp-ui-sideline-show-hover nil))
 
 (provide 'init-lsp)

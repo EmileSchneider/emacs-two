@@ -24,7 +24,7 @@
   (setq neo-buffer--insert-dir-entry nil)
   (setq neo-buffer--insert-root-entry nil))
 
-(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :height 120)
 
 ;; (use-package solarized-theme
 ;;   :ensure t
