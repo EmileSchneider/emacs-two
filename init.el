@@ -48,6 +48,15 @@
 
 ;; (require 'init-lsp)
 ;; (require 'init-dap)
+
+;; (use-package fsharp-mode
+;;   :defer t
+;;   :ensure t
+;;   :config
+;;   (setq-default fsharp-indent-offset 2)
+;;   ;;(add-hook 'fsharp-mode-hook 'highlight-indentation-mode)
+;;   )
+
 (use-package haskell-mode
   :ensure t)
 
@@ -55,13 +64,54 @@
   :ensure t)
 
 ;; (require 'init-rust)
-;; (require 'init-python)
+(require 'init-python)
 
 (require 'init-org)
 
-
 (setenv "PATH" (concat "~/.ghcup/bin/ghc:" (getenv "PATH")))
 
+
+(use-package clojure-mode
+  :ensure t)
+
+(use-package cider
+  :ensure t)
+
+(use-package smartparens-mode
+  :ensure smartparens  ;; install the package
+  :hook (prog-mode text-mode markdown-mode) ;; add `smartparens-mode` to these hooks
+  :config
+  ;; load default config
+  (require 'smartparens-config))
+
+
+;;
+;; OCaml
+;;
+
+(let ((opam-share (ignore-errors (car (process-lines "opam" "var" "share")))))
+  (when (and opam-share (file-directory-p opam-share))
+    ;; Register Merlin
+    (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
+    (autoload 'merlin-mode "merlin" nil t nil)
+    ;; Automatically start it in OCaml buffers
+    (add-hook 'tuareg-mode-hook 'merlin-mode t)
+    (add-hook 'caml-mode-hook 'merlin-mode t)
+    ;; Use opam switch to lookup ocamlmerlin binary
+    (setq merlin-command 'opam)
+    ;; To easily change opam switches within a given Emacs session, you can
+    ;; install the minor mode https://github.com/ProofGeneral/opam-switch-mode
+    ;; and use one of its "OPSW" menus.
+    ))
+
+(add-to-list 'load-path "/home/user/.opam/default/share/emacs/site-lisp")
+(require 'ocp-indent)
+
+
+;; Golang
+
+(use-package go-mode
+  :ensure t)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -72,7 +122,7 @@
  '(haskell-stylish-on-save t)
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(org-tempo which-key helm doom-modeline all-the-icons solarized-theme)))
+   '(tuareg highlight-indentation highlight-indentation-mode smartparens cider clojure-mode org-tempo which-key helm doom-modeline all-the-icons solarized-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
