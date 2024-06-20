@@ -24,7 +24,7 @@
   (setq neo-buffer--insert-dir-entry nil)
   (setq neo-buffer--insert-root-entry nil))
 
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 100)
 
 ;; (use-package solarized-theme
 ;;   :ensure t
@@ -44,5 +44,8 @@
   :init (doom-modeline-mode 1))
 
 ;; (set-default 'truncate-lines t)
+
+(use-package highlight-identation
+  :ensure t)
 
 (provide 'init-ui)

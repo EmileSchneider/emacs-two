@@ -63,7 +63,7 @@
 (use-package magit
   :ensure t)
 
-;; (require 'init-rust)
+(require 'init-rust)
 (require 'init-python)
 
 (require 'init-org)
